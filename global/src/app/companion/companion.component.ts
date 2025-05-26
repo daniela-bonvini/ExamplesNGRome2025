@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Companion } from '../models/companion.model';
-import { assignQuest } from '../store/companion.actions';
-import { selectCompanions } from '../store/companion.selectors';
+import { Companion } from './models/companion.model';
+import { assignQuest } from './store/companion.actions';
+import { selectCompanions } from './store/companion.selectors';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

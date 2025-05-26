@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { assignQuest } from '../store/companion.actions';
+import { assignQuest } from './companion.actions';
 import { map, tap } from 'rxjs/operators';
 
 @Injectable()
