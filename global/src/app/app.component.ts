@@ -6,12 +6,11 @@ import { Store } from '@ngrx/store';
 import { selectCompanions } from './store/companion.selectors';
 import { assignQuest } from './store/companion.actions';
 import { CommonModule } from '@angular/common';
-import { SelectModule } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, SelectModule, FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -27,7 +26,10 @@ export class AppComponent {
 
   onAssignQuest() {
     // Forza il tipo number per selectedCompanionId
-    const id = this.selectedCompanionId !== null ? Number(this.selectedCompanionId) : null;
+    const id =
+      this.selectedCompanionId !== null
+        ? Number(this.selectedCompanionId)
+        : null;
     if (id && this.questInput) {
       console.log(id, this.questInput);
       this.store.dispatch(
