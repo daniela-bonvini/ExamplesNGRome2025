@@ -1,0 +1,19 @@
+<h1>Ring Search - Signal Store</h1>
+
+<input
+  type="text"
+  placeholder="Cerca..."
+  (input)="onSearch($event)"
+  class="search-bar"
+/>
+<br />
+<span>Searched term: {{ searchTerm() }}</span>
+<br />
+<ul>
+  Searching for the ring in: @for (place of filteredPlaces(); track place) {
+  <li>{{ place }}</li>
+  }
+</ul>
+<!-- <br />
+<span>The last searched place is: {{ lastSearchedPlace() }}</span> -->
+<pre>{{ listOfPlaces() }}</pre>
