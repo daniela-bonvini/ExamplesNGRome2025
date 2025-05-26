@@ -1,1 +1,0 @@
-# ExamplesNGRome2025

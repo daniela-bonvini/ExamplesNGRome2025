@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@ngrx/effects": "^19.2.0"
+  }
+}
