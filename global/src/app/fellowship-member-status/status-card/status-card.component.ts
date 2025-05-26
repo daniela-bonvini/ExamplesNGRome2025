@@ -28,12 +28,18 @@ export class StatusCardComponent {
     // const target = event.target as HTMLInputElement;
     // const newStatus = target.value as FellowshipMemberStatus['status'];
     if (this.updatedMember()) {
-      console.log('Updating member status...');
-      this.componentStore.setState({
-        memberStatus: {
-          name: this.member().name,
-          status: 'dead',
-        },
+      this.componentStore.setState((state) => {
+        return {
+          ...state,
+          memberStatus: {
+            ...state.memberStatus,
+            status: state.memberStatus.status === 'alive' ? 'unknown' : 'dead',
+          },
+        };
+        // memberStatus: {
+        //   name: this.member().name,
+        //   status: 'dead',
+        // },
       });
     }
   }

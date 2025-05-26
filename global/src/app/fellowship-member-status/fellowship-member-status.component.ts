@@ -11,7 +11,7 @@ import { FellowshipMemberStatus } from './models/fellowshipMemberStatus.model';
 export class FellowshipMemberStatusComponent {
   member1: FellowshipMemberStatus = {
     name: 'Frodo Baggins',
-    status: 'unknown',
+    status: 'alive',
   };
   member2: FellowshipMemberStatus = {
     name: 'Boromir',
