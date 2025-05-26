@@ -11,33 +11,32 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, SelectModule, FormsModule ],
+  imports: [CommonModule, SelectModule, FormsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   private store: Store = inject(Store);
   companions$: Observable<Companion[]>;
   selectedCompanionId: number | null = null;
-  questInput: string = "";
+  questInput: string = '';
 
   constructor() {
     this.companions$ = this.store.select(selectCompanions);
-    this.companions$.subscribe((res) => console.log(res))
-  }
-
-  ngOnInit() {
   }
 
   onAssignQuest() {
-    if (this.selectedCompanionId && this.questInput) {
+    // Forza il tipo number per selectedCompanionId
+    const id = this.selectedCompanionId !== null ? Number(this.selectedCompanionId) : null;
+    if (id && this.questInput) {
+      console.log(id, this.questInput);
       this.store.dispatch(
         assignQuest({
-          id: this.selectedCompanionId,
+          id,
           quest: this.questInput,
         })
       );
-      this.questInput = "";
+      this.questInput = '';
     }
   }
 }

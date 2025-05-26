@@ -13,8 +13,8 @@
         *ngFor="let companion of companions$ | async"
         [value]="companion.id"
       >
-        Companion {{ companion.id }} - Current Quest:
-        {{ companion.quest || 'None' }}
+        Companion {{ companion.name }} - Current Quest:
+        {{ companion.quest || "None" }}
       </option>
     </select>
   </div>

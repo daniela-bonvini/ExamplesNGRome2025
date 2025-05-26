@@ -2,10 +2,9 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
-import { companionReducer } from './reducers';
+import { companionReducer } from './reducers/companion.reducer';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideEffects } from '@ngrx/effects';
-import { CompanionEffects } from './store/companion.effects';
+import { effectsConfig } from './effects.config';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,6 +12,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideRouter(routes),
     provideStore({ companion: companionReducer }),
-    provideEffects([CompanionEffects])
-  ]
+    ...effectsConfig.providers,
+  ],
 };
