@@ -25,9 +25,11 @@ export const RingSearchStore = signalStore(
   withState(initialState),
   withComputed((store) => ({
     filteredPlaces: computed(() => {
-      return store.listOfPlaces().filter((place) => {
-        place.toLowerCase().includes(store.searchTerm().toLowerCase());
-      });
+      return store
+        .listOfPlaces()
+        .filter((place) =>
+          place.toLowerCase().includes(store.searchTerm().toLowerCase())
+        );
     }),
   })),
   withMethods((store) => ({

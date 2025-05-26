@@ -13,16 +13,9 @@ import { FormsModule } from '@angular/forms';
 export class RingSearchComponent {
   private ringSearchStore = inject(RingSearchStore);
   lastSearchedPlace: Signal<string> = this.ringSearchStore.lastSearchedPlace;
-  //filteredPlaces: Signal<string[]> = this.ringSearchStore.filteredPlaces;
-
+  filteredPlaces: Signal<string[]> = this.ringSearchStore.filteredPlaces;
   listOfPlaces: Signal<string[]> = this.ringSearchStore.listOfPlaces;
   searchTerm: Signal<string> = this.ringSearchStore.searchTerm;
-
-  filteredPlaces = computed(() => {
-    return this.listOfPlaces().filter((place) => {
-      place.toLowerCase().includes(this.searchTerm().toLowerCase());
-    });
-  });
 
   onSearch(event: Event) {
     const term = (event.target as HTMLInputElement).value;
