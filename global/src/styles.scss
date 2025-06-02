@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

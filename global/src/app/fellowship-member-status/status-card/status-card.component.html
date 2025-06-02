@@ -1,5 +1,8 @@
-<div>
-  Fellowship member {{ updatedMember()?.name }} status is
-  {{ updatedMember()?.status }}.
+<div class="status-card-container">
+  <label
+    >Fellowship member {{ updatedMember()?.name }} status is
+    <b>{{ updatedMember()?.status }}</b
+    >.
+  </label>
   <button (click)="changeMemberStatus()">Change member status</button>
 </div>
