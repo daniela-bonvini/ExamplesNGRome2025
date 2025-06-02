@@ -1,8 +1,16 @@
 <div class="status-card-container">
   <label
-    >Fellowship member {{ updatedMember()?.name }} status is
-    <b>{{ updatedMember()?.status }}</b
-    >.
+    >Fellowship member {{ memberStatus()?.name }} status is
+    <b> {{ memberStatus()?.status }}</b>
+    <img
+      [src]="src()"
+      style="width: 1em; height: 1em; vertical-align: middle"
+    />
   </label>
-  <button (click)="changeMemberStatus()">Change member status</button>
+  <button
+    [disabled]="memberStatus()?.status === 'dead'"
+    (click)="changeMemberStatus()"
+  >
+    Change member status
+  </button>
 </div>

@@ -5,4 +5,11 @@
 
 label {
   padding-right: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+b,
+img {
+  padding-left: 0.5rem;
 }
