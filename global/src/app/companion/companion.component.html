@@ -20,19 +20,21 @@
   </div>
 
   <div class="form-group">
-    <label for="questInput">Quest:</label>
-    <input
-      type="text"
-      id="questInput"
-      [(ngModel)]="questInput"
-      class="form-control"
-      placeholder="Enter quest"
-    />
+    <label for="questSelect">Select Companion:</label>
+    <select id="questSelect" [(ngModel)]="selectedQuest" class="form-control">
+      <option [ngValue]="null">Select a quest to assign</option>
+      <option
+        *ngFor="let quest of questList$ | async"
+        [value]="quest.description"
+      >
+        {{ quest.description }}
+      </option>
+    </select>
   </div>
 
   <button
     (click)="onAssignQuest()"
-    [disabled]="!selectedCompanionId || !questInput"
+    [disabled]="!selectedCompanionId || !selectedQuest"
     class="btn btn-primary"
   >
     Assign Quest

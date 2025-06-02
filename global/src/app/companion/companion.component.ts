@@ -3,9 +3,10 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Companion } from './models/companion.model';
 import { assignQuest } from './store/companion.actions';
-import { selectCompanions } from './store/companion.selectors';
+import { selectCompanions, selectQuestList } from './store/companion.selectors';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Quest } from './models/quest.model';
 
 @Component({
   selector: 'app-companion',
@@ -16,28 +17,31 @@ import { FormsModule } from '@angular/forms';
 export class CompanionComponent {
   private store: Store = inject(Store);
   companions$: Observable<Companion[]>;
+  questList$: Observable<Quest[]>;
   selectedCompanionId: number | null = null;
-  questInput: string = '';
+  selectedQuest: string | null = null;
 
   constructor() {
     this.companions$ = this.store.select(selectCompanions);
+    this.questList$ = this.store.select(selectQuestList);
   }
 
   onAssignQuest() {
-    // Forza il tipo number per selectedCompanionId
     const id =
       this.selectedCompanionId !== null
         ? Number(this.selectedCompanionId)
         : null;
-    if (id && this.questInput) {
-      console.log(id, this.questInput);
+
+    if (id && this.selectedQuest) {
+      console.log('Selected quest:', this.selectedQuest);
       this.store.dispatch(
         assignQuest({
           id,
-          quest: this.questInput,
+          quest: this.selectedQuest,
         })
       );
-      this.questInput = '';
+      this.selectedCompanionId = null;
+      this.selectedQuest = null;
     }
   }
 }

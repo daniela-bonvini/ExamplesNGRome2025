@@ -6,5 +6,10 @@ export const selectCompanionState =
 
 export const selectCompanions = createSelector(
   selectCompanionState,
-  (state: CompanionState) => state.list
+  (state: CompanionState) => state.companionList,
+);
+
+export const selectQuestList = createSelector(
+  selectCompanionState,
+  (state: CompanionState) => state.questList
 );
