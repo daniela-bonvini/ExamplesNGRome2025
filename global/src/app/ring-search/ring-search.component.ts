@@ -12,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 })
 export class RingSearchComponent {
   private ringSearchStore = inject(RingSearchStore);
-  lastSearchedPlace: Signal<string> = this.ringSearchStore.lastSearchedPlace;
   filteredPlaces: Signal<string[]> = this.ringSearchStore.filteredPlaces;
   listOfPlaces: Signal<string[]> = this.ringSearchStore.listOfPlaces;
   searchTerm: Signal<string> = this.ringSearchStore.searchTerm;

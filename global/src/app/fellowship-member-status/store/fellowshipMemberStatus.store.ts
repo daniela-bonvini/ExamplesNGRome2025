@@ -11,4 +11,11 @@ export class FellowshipMemberStatusStore extends ComponentStore<FellowshipMember
   constructor() {
     super({ memberStatus: { name: '', status: 'alive' } });
   }
+
+  readonly changeStatus = this.updater((state) => ({
+    memberStatus: {
+      ...state.memberStatus,
+      status: state.memberStatus.status === 'alive' ? 'unknown' : 'dead',
+    },
+  }));
 }

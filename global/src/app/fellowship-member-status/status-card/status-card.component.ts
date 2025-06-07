@@ -37,15 +37,7 @@ export class StatusCardComponent {
 
   changeMemberStatus() {
     if (this.memberStatus()) {
-      this.componentStore.setState((state) => {
-        return {
-          ...state,
-          memberStatus: {
-            ...state.memberStatus,
-            status: state.memberStatus.status === 'alive' ? 'unknown' : 'dead',
-          },
-        };
-      });
+      this.componentStore.changeStatus();
     }
   }
 }

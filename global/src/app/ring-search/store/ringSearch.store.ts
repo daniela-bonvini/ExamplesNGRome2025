@@ -9,13 +9,11 @@ import {
 } from '@ngrx/signals';
 
 type RingSearchState = {
-  lastSearchedPlace: string;
   searchTerm: string;
   listOfPlaces: string[];
 };
 
 const initialState: RingSearchState = {
-  lastSearchedPlace: 'Anduin river',
   searchTerm: '',
   listOfPlaces: [],
 };
@@ -33,9 +31,6 @@ export const RingSearchStore = signalStore(
     }),
   })),
   withMethods((store) => ({
-    setLastSearchedPlace(place: string) {
-      patchState(store, (state) => ({ ...state, lastSearchedPlace: place }));
-    },
     updateSearchTerm(term: string) {
       patchState(store, (state) => ({ ...state, searchTerm: term }));
     },
