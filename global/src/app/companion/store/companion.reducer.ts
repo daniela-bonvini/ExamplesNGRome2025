@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import * as CompanionActions from '../store/companion.actions';
+import * as CompanionActions from './companion.actions';
 import { Companion } from '../models/companion.model';
 import { Quest } from '../models/quest.model';
 
