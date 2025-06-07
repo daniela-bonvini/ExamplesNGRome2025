@@ -2,8 +2,8 @@
   <h1>Fellowship Member Status - Component Store</h1>
 
   <div class="card-container">
-    <app-status-card [member]="member1"></app-status-card>
-    <app-status-card [member]="member2"></app-status-card>
-    <app-status-card [member]="member3"></app-status-card>
+    @for(member of members; track member?.companion?.id) {
+    <app-status-card [member]="member"></app-status-card>
+    }
   </div>
 </div>

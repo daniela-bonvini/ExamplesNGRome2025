@@ -9,7 +9,7 @@ export interface FellowshipMemberState {
 @Injectable()
 export class FellowshipMemberStatusStore extends ComponentStore<FellowshipMemberState> {
   constructor() {
-    super({ memberStatus: { name: '', status: 'alive' } });
+    super({ memberStatus: { companion: undefined, status: 'alive' } });
   }
 
   readonly changeStatus = this.updater((state) => ({

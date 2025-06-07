@@ -1,4 +1,6 @@
+import { Companion } from '../../companion/models/companion.model';
+
 export interface FellowshipMemberStatus {
-  name: string;
+  companion: Companion | undefined;
   status: 'alive' | 'dead' | 'unknown';
 }

@@ -31,7 +31,10 @@ export class StatusCardComponent {
 
   ngOnInit() {
     this.componentStore.setState({
-      memberStatus: { name: this.member().name, status: this.member().status },
+      memberStatus: {
+        companion: this.member().companion,
+        status: this.member().status,
+      },
     });
   }
 
