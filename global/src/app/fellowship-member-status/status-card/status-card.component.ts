@@ -15,9 +15,7 @@ export class StatusCardComponent {
   private componentStore = inject(FellowshipMemberStatusStore);
   member = input.required<FellowshipMemberStatus>({});
 
-  memberStatus = toSignal(
-    this.componentStore.select((state) => state.memberStatus)
-  );
+  memberStatus = toSignal(this.componentStore.memberStatus$);
 
   src = computed(() => {
     const srcName =

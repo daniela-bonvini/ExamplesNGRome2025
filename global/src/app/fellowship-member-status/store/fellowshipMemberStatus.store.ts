@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { FellowshipMemberStatus } from '../models/fellowshipMemberStatus.model';
+import { Observable } from 'rxjs';
 
 export interface FellowshipMemberState {
   memberStatus: FellowshipMemberStatus;
@@ -18,4 +19,8 @@ export class FellowshipMemberStatusStore extends ComponentStore<FellowshipMember
       status: state.memberStatus.status === 'alive' ? 'unknown' : 'dead',
     },
   }));
+
+  readonly memberStatus$: Observable<FellowshipMemberStatus> = this.select(
+    (state) => state.memberStatus
+  );
 }
