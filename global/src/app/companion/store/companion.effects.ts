@@ -1,25 +1,49 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { assignQuest } from './companion.actions';
-import { map, tap } from 'rxjs/operators';
+import { timer } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { loadQuestListSuccess } from './companion.actions';
 
 @Injectable()
 export class CompanionEffects {
   private actions$ = inject(Actions);
 
-  assignQuestLog$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(assignQuest),
-        tap((action) => {
-          console.log(
-            '[Effect] Assigned quest:',
-            action.quest,
-            'to companion with ID:',
-            action.id
-          );
-        })
-      ),
-    { dispatch: false }
+  loadQuestList$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType('[Companion] Load Quest List'),
+      switchMap(() => {
+        // simulating HTTP request with delay using timer
+        return timer(1000).pipe(
+          map(() => {
+            console.log('[Effect] Quest list loaded');
+            return loadQuestListSuccess({ questList: mockQuestList });
+          })
+        );
+      })
+    )
   );
 }
+
+const mockQuestList = [
+  { id: 1, description: 'Destroy the one ring' },
+  {
+    id: 2,
+    description: 'Defend the citadel from the orcs',
+  },
+  {
+    id: 3,
+    description: 'Fight the Balrog',
+  },
+  {
+    id: 4,
+    description: 'Forge an alliance with Rohan',
+  },
+  {
+    id: 5,
+    description: 'Rescue the captured hobbits',
+  },
+  {
+    id: 6,
+    description: 'Prepare for the final battle against Sauron',
+  },
+];

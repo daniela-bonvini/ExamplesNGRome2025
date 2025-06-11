@@ -20,29 +20,7 @@ export const initialState: CompanionState = {
     { id: 8, quest: '', name: 'Pippin' },
     { id: 9, quest: '', name: 'Merry' },
   ],
-  questList: [
-    { id: 1, description: 'Destroy the one ring' },
-    {
-      id: 2,
-      description: 'Defend the citadel from the orcs',
-    },
-    {
-      id: 3,
-      description: 'Fight the Balrog',
-    },
-    {
-      id: 4,
-      description: 'Forge an alliance with Rohan',
-    },
-    {
-      id: 5,
-      description: 'Rescue the captured hobbits',
-    },
-    {
-      id: 6,
-      description: 'Prepare for the final battle against Sauron',
-    },
-  ],
+  questList: [],
 };
 
 export const companionReducer = createReducer(
@@ -52,5 +30,10 @@ export const companionReducer = createReducer(
     companionList: state.companionList.map((companion) =>
       companion.id === id ? { ...companion, quest } : companion
     ),
+  })),
+
+  on(CompanionActions.loadQuestListSuccess, (state, { questList }) => ({
+    ...state,
+    questList,
   }))
 );

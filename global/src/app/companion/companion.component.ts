@@ -26,6 +26,10 @@ export class CompanionComponent {
     this.questList$ = this.store.select(selectQuestList);
   }
 
+  ngOnInit() {
+    this.store.dispatch({ type: '[Companion] Load Quest List' });
+  }
+
   onAssignQuest() {
     const id =
       this.selectedCompanionId !== null
