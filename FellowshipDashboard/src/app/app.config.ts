@@ -5,6 +5,7 @@ import { provideStore } from '@ngrx/store';
 import { companionReducer } from './companion/store/companion.reducer';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { effectsConfig } from './companion/effects.config';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,6 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideRouter(routes),
     provideStore({ companion: companionReducer }),
+    provideStoreDevtools({ maxAge: 25, logOnly: false }),
     ...effectsConfig.providers,
   ],
 };
